@@ -1,13 +1,18 @@
+import Card from 'react-bootstrap/Card'
+import { ListGroup } from 'react-bootstrap'
 
-
-const Movie = ( movie ) => {
+const Movie = ( {movie} ) => {
     return (
-        <div>
-            <h3>{movie.Title}</h3>
-            <p>{movie.Year}</p>
-            <p>{movie.type}</p>
-            <img src={movie.Poster} alt='poster' ></img>
-        </div>
+        <Card style={{ minWidth: '18rem', maxWidth: '20rem'}} className='mb-3'>
+            <Card.Img variant="top" src={movie.Poster} alt='poster' />
+            <Card.Body>
+                <Card.Title>{movie.Title}</Card.Title>
+                    <ListGroup>
+                        <ListGroup.Item>{movie.Year}</ListGroup.Item>
+                        <ListGroup.Item>{movie.Type}</ListGroup.Item>
+                    </ListGroup>
+            </Card.Body>
+        </Card>
     )
 }
 

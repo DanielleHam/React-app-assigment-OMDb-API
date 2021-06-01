@@ -1,6 +1,7 @@
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
-
-const Form = ( props ) => {
+const FormSearch = ( props ) => {
 
     const search = (e) => {
          e.preventDefault();
@@ -8,24 +9,25 @@ const Form = ( props ) => {
 
 
     return (
-        <form className='search-form' onSubmit={search}>
-            <div className='form-control'>
-                <label htmlFor='s'>Name of the movie, serie or episode</label>
-                <input type='text' name='s' placeholder='i.e. Love and Monsters' value={props.value} onChange={(e) => props.setSearchValue(e.target.value)}/>
-            </div>
-            <div className='form-control'>
-                <label htmlFor='type' >Choose type: </label>
-                <select id="type" name="type" value={props.value} onChange={(e) => props.setType(e.target.value)}>
+        <Form onSubmit={search}>
+             <Form.Group>
+                <Form.Label >Name of the movie, serie or episode</Form.Label>
+                <Form.Control type='text' placeholder='i.e. Love and Monsters' value={props.value} onChange={(e) => props.setSearchValue(e.target.value)}/>
+            </Form.Group> 
+            
+            <Form.Group>
+                <Form.Label>Choose type: </Form.Label>
+                <Form.Control as='select' id="type" name="type" value={props.value} onChange={(e) => props.setType(e.target.value)}>
                     <option value="all">All</option>
                     <option value="movie">Movie</option>
                     <option value="series">Series</option>
                     <option value="episode">Episode</option>
-                </select>
-            </div>
-
-            <input type='submit' value='search' className='btn btn-block'/> 
-        </form>
+                </Form.Control>
+            </Form.Group>
+            <Button variant="dark" type='submit' value='search' block>Search</Button>
+         
+        </Form>
     )
 }
 
-export default Form
+export default FormSearch

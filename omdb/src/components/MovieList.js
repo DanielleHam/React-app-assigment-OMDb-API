@@ -1,18 +1,14 @@
 import Movie from './Movie'
+import CardDeck from 'react-bootstrap/CardDeck'
+
 
 const MovieList = ( props ) => {
     return (
-        <>
+        <CardDeck className='justify-content-around'>
             {props.movies.map((movie) => (
-                <div key={movie.imdbID}>
-                    <h3>{movie.Title}</h3>
-                    <p>{movie.Year}</p>
-                    <p>{movie.Type}</p>
-                    <img src={movie.Poster} alt='poster' ></img>
-                </div>
-
+                <Movie key={movie.imdbID} movie={movie}/>
             ))}
-        </>
+        </CardDeck>
     )
 }
 
