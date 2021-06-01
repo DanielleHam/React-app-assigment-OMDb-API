@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 const MovieAPI = () => {
 
     const [movies, setMovies] = useState([])
-    const [searchValue, setSearchValue] = useState('Love and Monsters')
+    const [searchValue, setSearchValue] = useState('')
     const [type, setType] = useState('')
     const [errorMessage, setErrorMessage] = useState(null)
 
@@ -28,8 +28,14 @@ const MovieAPI = () => {
         }
     }
 
+
     useEffect(() => {
-        getMovieRequest(searchValue, type);
+
+        if (searchValue !== '') {
+            getMovieRequest(searchValue, type);
+        } else {
+            setSearchValue('love and monsters')
+        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchValue, type])
     
